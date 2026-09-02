@@ -1,38 +1,123 @@
-# 📚 Sistem Informasi Perpustakaan (Laravel)
+# 📚 Aplikasi Peminjaman Buku Perpustakaan
 
-Aplikasi manajemen perpustakaan sekolah berbasis web yang dibangun menggunakan **Laravel** dan **Tailwind CSS**. Aplikasi ini memisahkan hak akses antara **Admin** dan **Siswa (User)** untuk mempermudah proses pencatatan dan peminjaman buku.
+Aplikasi sistem informasi berbasis web untuk mengelola katalog, peminjaman, dan pengembalian buku perpustakaan sekolah/instansi secara praktis dan terorganisir. Dibuat menggunakan framework **Laravel** dan **Tailwind CSS**.
 
 ---
 
 ## ✨ Fitur Utama
 
 ### 👨‍💼 Panel Admin
-- **Dashboard Admin**: Ringkasan data sistem.
-- **Manajemen Buku (CRUD)**: Tambah, edit, hapus, dan kelola stok buku perpustakaan.
-- **Manajemen Anggota/User (CRUD)**: Kelola data pengguna/siswa.
-- **Manajemen Peminjaman**: Memantau dan mengonfirmasi status peminjaman serta pengembalian buku.
+
+* **Dashboard Admin:** Ringkasan data sistem perpustakaan.
+* **Kelola Data Buku (CRUD):** Tambah, lihat, edit, dan hapus data buku (Judul, Pengarang, Penerbit, Stok, Kode Buku).
+* **Kelola Anggota / User (CRUD):** Kelola data pengguna/siswa.
+* **Kelola Peminjaman:** Memantau daftar peminjaman buku dan memperbarui status pengembalian.
 
 ### 👨‍🎓 Panel Siswa (User)
-- **Katalog Buku**: Melihat daftar buku yang tersedia lengkap dengan sisa stok.
-- **Peminjaman Mandiri**: Mengajukan peminjaman buku langsung dari sistem secara mandiri.
-- **Riwayat & Pengembalian**: Memantau riwayat peminjaman dan fitur pengembalian buku mandiri.
+
+* **Katalog Buku Tersedia:** Melihat daftar semua buku yang siap dipinjam beserta informasi stok real-time.
+* **Peminjaman Buku Mandiri:** Meminjam buku langsung dari sistem dengan batas durasi pengembalian otomatis.
+* **Riwayat Peminjaman Saya:** Melihat daftar buku yang sedang dipinjam dan riwayat buku yang sudah dikembalikan.
+* **Pengembalian Buku Mandiri:** Fitur untuk mengembalikan buku yang dipinjam langsung melalui halaman dashboard siswa.
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Persyaratan Sistem
 
-- **Framework**: [Laravel 12](https://laravel.com)
-- **Language**: PHP 8.2+
-- **Database**: MySQL
-- **Styling**: Tailwind CSS / Laravel Breeze
+Sebelum menjalankan aplikasi ini, pastikan sistem Anda sudah terinstall:
+
+* **PHP** >= 8.2
+* **Composer** >= 2.0
+* **Node.js** >= 18.x & **NPM**
+* Database Engine (**MySQL** / **MariaDB**)
 
 ---
 
-## 🚀 Cara Instalasi Lokal
+## 🚀 Langkah Instalasi & Cara Penggunaan
 
-Jika ingin menjalankan project ini di komputer lokal, ikuti langkah-langkah berikut:
+Ikuti langkah-langkah berikut untuk menjalankan project ini di komputer lokal Anda:
 
-1. **Clone repository ini:**
-   ```bash
-   git clone [https://github.com/Ilham6648/perpustakaan-laravel-.git](https://github.com/Ilham6648/perpustakaan-laravel-.git)
-   cd perpustakaan-laravel-
+### 1. Clone Repositori
+
+```bash
+git clone [https://github.com/davinnnnzzz/peminjamanperpus.git](https://github.com/davinnnnzzz/peminjamanperpus.git)
+cd peminjamanperpus
+```
+
+### 2. Install Dependensi PHP & JavaScript
+
+```bash
+composer install
+npm install
+```
+
+### 3. Konfigurasi File `.env`
+
+Salin file `.env.example` menjadi `.env` :
+
+```bash
+cp .env.example .env
+```
+
+Buka file `.env` dan sesuaikan pengaturan database Anda:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=peminjamanperpus
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### 4. Generate Application Key
+
+```bash
+php artisan key:generate
+```
+
+### 5. Migrasi & Seeder Database
+
+Jalankan migrasi tabel ke database beserta data awal:
+
+```bash
+php artisan migrate --seed
+```
+
+### 6. Jalankan Server Lokal
+
+Jalankan dev server Laravel dan Vite (Asset Bundler) secara bersamaan:
+
+**Terminal 1 (Laravel Server):**
+```bash
+php artisan serve
+```
+
+**Terminal 2 (Vite Asset Server):**
+```bash
+npm run dev
+```
+
+Akses aplikasi di browser melalui URL: `http://127.0.0.1:8000`
+
+---
+
+## 💻 Panduan Alur Penggunaan Aplikasi
+
+1. **Registrasi / Login:**
+   * Pengguna dapat membuat akun baru atau login menggunakan akun yang sudah terdaftar.
+2. **Meminjam Buku (User/Siswa):**
+   * Masuk ke menu **Dashboard / Katalog**.
+   * Pilih buku yang ingin dipinjam pada tabel **Katalog Buku Tersedia**, lalu klik tombol **Pinjam**.
+   * Buku akan secara otomatis masuk ke tabel **Riwayat Peminjaman Buku Saya** dan stok buku berkurang.
+3. **Mengembalikan Buku (User/Siswa):**
+   * Pada tabel **Riwayat Peminjaman Buku Saya**, klik tombol **Kembalikan** pada buku yang ingin dikembalikan.
+   * Status peminjaman berubah menjadi `Dikembalikan` dan stok buku otomatis bertambah kembali.
+4. **Kelola Sistem (Admin):**
+   * Akses `/admin/dashboard` untuk mengelola data buku, pengguna, dan transaksi peminjaman secara menyeluruh.
+
+---
+
+## 📝 Lisensi
+
+Project ini dibuat untuk kebutuhan pembelajaran dan pengembangan aplikasi web dengan [Laravel Framework](https://laravel.com).
