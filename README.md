@@ -40,8 +40,8 @@ Ikuti langkah-langkah berikut untuk menjalankan project ini di komputer lokal An
 ### 1. Clone Repositori
 
 ```bash
-git clone [https://github.com/davinnnnzzz/peminjamanperpus.git](https://github.com/davinnnnzzz/peminjamanperpus.git)
-cd peminjamanperpus
+git clone [https://github.com/Ilham6648/perpustakaan-laravel-.git](https://github.com/Ilham6648/perpustakaan-laravel-.git)
+   cd peminjamanperpus
 ```
 
 ### 2. Install Dependensi PHP & JavaScript
